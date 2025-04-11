@@ -1,16 +1,16 @@
 import os
 from typing import Annotated
 from fastapi import Depends
-from models import event, user, comment, like, notification, recommendation
+from app.models import User, Event, Comment
 from sqlmodel import SQLModel, Session, create_engine
-from services.config import settings
+from app.services.config import settings
 
 DATABASE_URL = settings.DATABASE_URL
 
 # Connecteur spécial pour SQLite
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith(
     "sqlite") else {}
-engine = create_engine(DATABASE_URL, connect_args=connect_args, echo=True)
+engine = create_engine(DATABASE_URL, connect_args=connect_args)
 
 
 def create_db_and_tables():

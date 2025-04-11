@@ -1,12 +1,13 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
+from typing import Optional
 
 
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
-    firstname: str
-    lastname: str
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
 
 
 class UserOut(BaseModel):
@@ -16,5 +17,6 @@ class UserOut(BaseModel):
     lastname: str
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True
+    }

@@ -5,6 +5,7 @@ from typing import Optional
 
 class EventBase(BaseModel):
     title: str
+    location: str
     description: Optional[str]
     start_date: datetime
     end_date: datetime
@@ -19,5 +20,14 @@ class EventOut(EventBase):
     owner_id: int
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True
+    }
+
+
+class EventUpdate(BaseModel):
+    title: Optional[str] = None
+    location: Optional[str] = None
+    description: Optional[str] = None
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None

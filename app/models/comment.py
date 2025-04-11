@@ -1,8 +1,6 @@
 from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime, timezone
 from typing import Optional
-from .user import User
-from .event import Event
 
 
 class Comment(SQLModel, table=True):
@@ -16,5 +14,5 @@ class Comment(SQLModel, table=True):
     user_id: int = Field(foreign_key="users.id")
     event_id: int = Field(foreign_key="events.id")
 
-    user: User = Relationship(back_populates="comments")
-    event: Event = Relationship(back_populates="comments")
+    user: "User" = Relationship(back_populates="comments")
+    event: "Event" = Relationship(back_populates="comments")

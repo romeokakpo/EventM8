@@ -1,0 +1,32 @@
+### Get all events
+GET {{host}}/events
+
+### Create a new event
+POST {{host}}/events
+Content-Type: application/json
+Authorization: Bearer {{authorization}}
+
+{
+  "title": "Sample Event",
+  "description": "This is a sample event description.",
+  "start_date": "2025-04-15T10:00:00",
+  "end_date": "2025-04-15T15:00:00",
+  "location": "Sample Location"
+}
+
+### Get a specific event by ID
+GET {{host}}/events/4
+
+### Update an event (uncomment the endpoint in your code first)
+PATCH {{host}}/events/4
+Content-Type: application/json
+Authorization: Bearer {{authorization}}
+
+{
+  "title": "Updated Event Title",
+  "description": "Updated description."
+}
+
+### Delete an event (uncomment the endpoint in your code first)
+DELETE {{host}}/events/3
+Authorization: Bearer {{authorization}}

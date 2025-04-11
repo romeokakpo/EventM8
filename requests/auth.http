@@ -1,0 +1,23 @@
+### Login Request
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "user@example.com",
+    "password": "yourpassword"
+}
+
+### Register Request
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "user@example.com",
+    "password": "yourpassword"
+}
+
+### User Request
+GET {{host}}/auth/me
+Authorization: Bearer {{authorization}}

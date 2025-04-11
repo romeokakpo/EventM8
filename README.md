@@ -1,4 +1,4 @@
-## 📘 README.md – Plateforme de Gestion d'Événements (FastAPI)
+## 📘 Plateforme de Gestion d'Événements (FastAPI)
 
 ````markdown
 # 🎉 Plateforme de Gestion d'Événements – FastAPI
@@ -121,7 +121,7 @@ Ce projet a été développé pour démontrer une maîtrise avancée de **FastAP
 ## 📩 Contact
 
 > ✉️ romeokakpo3@gmail.com  
-> 💼 [Ton LinkedIn](https://www.linkedin.com/in/ton-profil)  
+> 💼 [LinkedIn](https://www.linkedin.com/in/romeo-kakpo3/)  
 > 🔗 Licence : MIT
 
 ```

@@ -3,9 +3,10 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from models.user import User
-from config import settings
-from ..database import SessionDep
+from app.models.user import User
+from .config import settings
+from app.database import SessionDep
+from sqlmodel import select
 
 # Gestion du hachage
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -30,7 +31,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 
 
 def authenticate_user(db: SessionDep, email: str, password: str):
-    user = db.get(User).filter(User.email == email).first()
+    user = db.exec(select(User).where(User.email == email)).first()
     if not user or not verify_password(password, user.hashed_password):
         return None
     return user
@@ -51,7 +52,7 @@ def get_current_user(db: SessionDep, token: str = Depends(oauth2_scheme)) -> Use
     except JWTError:
         raise credentials_exception
 
-    user = db.get(User).filter(User.id == user_id).first()
+    user = db.get(User, user_id)
     if user is None:
         raise credentials_exception
     return user

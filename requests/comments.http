@@ -1,0 +1,11 @@
+### Add a comment to an event
+POST {{host}}/events/1/comments
+Content-Type: application/json
+Authorization: Bearer {{authorization}}
+
+{
+  "content": "This is a comment for event 1."
+}
+
+### Get all comments for an event
+GET {{host}}/events/1/comments

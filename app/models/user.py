@@ -1,8 +1,6 @@
 from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime, timezone
 from typing import Optional
-from .event import Event
-from .comment import Comment
 
 
 class User(SQLModel, table=True):
@@ -16,5 +14,5 @@ class User(SQLModel, table=True):
     created_at: datetime = Field(default=datetime.now(
         timezone.utc).replace(tzinfo=None), nullable=False)
 
-    events: list[Event] = Relationship(back_populates="owner")
-    comments: list[Comment] = Relationship(back_populates="user")
+    events: list["Event"] = Relationship(back_populates="owner")
+    comments: list["Comment"] = Relationship(back_populates="user")
